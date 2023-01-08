@@ -10,7 +10,7 @@ db_path = os.path.join(BASE_DIR, "hrdb")
 con=sqlite3.connect(db_path)
 #con=sqlite3.connect('hrdb.db')
 rootp=Tk()
-Label(rootp,text="flight ticket booking",font="Bold 20").pack()
+Label(rootp,text="Simple Airline Booking System",font="Bold 20").pack()
 
 
 def fun8():
@@ -42,8 +42,9 @@ def fun8():
                 cur.execute("select * from economic2")
                 tkinter.messagebox.showinfo("your reservation is cancelled",cur.fetchall())
              else:
-                    cur.execute("delete from common2 where adno=x and boarding=y")
-                    cur.execute("select * from common2")
+                cur.execute("delete from common2 where adno=(?) and boarding=(?)",(x,y,))
+                cur.execute("select * from common2")
+                tkinter.messagebox.showinfo("your reservation is cancelled",cur.fetchall())
         
                     
             
@@ -60,7 +61,7 @@ def fun9():
     w2=Combobox(root4,height=5,width=15,values=["New York","Chicago","Dallas","San Francisco"])
     w2.grid(row=1,column=1)
     Label(root4,text="Choose day of travel").grid(row=2,column=0)
-    w3=Combobox(root4,text="choose day",height=5,width=15,values=["sunday","monday","tuesday","wensday","thursday","friday","saturday"])
+    w3=Combobox(root4,text="choose day",height=5,width=15,values=["Sunday","Monday","Tuesday","Wensday","Thursday","Friday","Saturday"])
     w3.grid(row=2,column=1)
     def fun10():
         a=w1.get()
@@ -102,7 +103,7 @@ def fun5():
     w2.grid(row=4,column=1)
     Label(root,text='Choose Class').grid(row=4,column=0)
     Label(root,text="Choose day of travel").grid(row=5,column=0)
-    w3=Combobox(root,text="choose day",height=5,width=15,values=["sunday","monday","tuesday","wensday","thursday","friday","saturday"])
+    w3=Combobox(root,text="choose day",height=5,width=15,values=["Sunday","Monday","Tuesday","Wensday","Thursday","Friday","Saturday"])
     w3.grid(row=5,column=1)
     Label(root,text="choose time of your flight").grid(row=6,column=0)
     w4=Combobox(root,height=5,width=15,values=["1:00 AM","7:00 AM","1:00 PM","4:00 PM","9:00 PM"])
